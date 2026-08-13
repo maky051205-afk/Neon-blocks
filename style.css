@@ -1,0 +1,366 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: radial-gradient(circle at top, #25004d, #080014 70%);
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  touch-action: manipulation;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+/* =========================
+   МЕНЮ
+========================= */
+
+#menu {
+  text-align: center;
+  padding: 15px 8px;
+}
+
+#menu h1 {
+  font-size: 32px;
+  margin: 5px 0 10px;
+  text-shadow:
+    0 0 8px #00e5ff,
+    0 0 20px #00e5ff;
+}
+
+#menu p {
+  font-size: 17px;
+  margin: 7px;
+}
+
+#difficulty {
+  text-align: center;
+  margin: 10px 0;
+}
+
+#difficulty p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#difficulty button {
+  margin: 3px;
+  padding: 9px 12px;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+
+#difficulty button:active {
+  transform: scale(0.95);
+}
+
+#levelName {
+  margin: 8px;
+  font-size: 18px;
+}
+
+#menu #start {
+  margin-top: 10px;
+  padding: 12px 24px;
+  font-size: 19px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
+}
+
+/* =========================
+   ИГРА
+========================= */
+
+#gameScreen {
+  display: none;
+  width: 100%;
+}
+
+#levelDisplay {
+  font-size: 17px;
+  margin: 4px;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  font-size: 17px;
+  margin: 6px;
+}
+
+/* =========================
+   ПОЛЕ 10 × 10
+========================= */
+
+#game {
+  position: relative;
+
+  width: 320px;
+  height: 320px;
+
+  margin: 8px auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(10, 32px);
+  grid-template-rows: repeat(10, 32px);
+
+  border: 2px solid #00e5ff;
+
+  box-shadow:
+    0 0 10px #00e5ff,
+    0 0 25px rgba(0, 229, 255, 0.5);
+}
+
+/* КЛЕТКИ */
+
+.cell {
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid #3b1b55;
+}
+
+/* =========================
+   ГОЛУБОЙ КВАДРАТ
+========================= */
+
+.player {
+  position: absolute;
+
+  width: 30px;
+  height: 30px;
+
+  background: #00e5ff;
+
+  border-radius: 6px;
+
+  z-index: 10;
+
+  box-shadow:
+    0 0 8px #00e5ff,
+    0 0 18px #00e5ff,
+    0 0 30px #00e5ff;
+
+  transition:
+    left 0.12s ease,
+    top 0.12s ease;
+}
+
+/* =========================
+   ⭐ ЗВЕЗДА
+========================= */
+
+.target {
+  position: absolute;
+
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 21px;
+
+  z-index: 5;
+
+  pointer-events: none;
+
+  filter:
+    drop-shadow(0 0 5px #fff)
+    drop-shadow(0 0 12px #ffd700);
+}
+
+/* АНИМАЦИЯ ЗВЕЗДЫ */
+
+.target.collect {
+  animation: collectStar 0.35s ease-out;
+}
+
+@keyframes collectStar {
+
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform:
+      scale(1.8)
+      rotate(20deg);
+
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* =========================
+   ✨ ЧАСТИЦЫ
+========================= */
+
+.particle {
+  position: absolute;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #00e5ff;
+
+  pointer-events: none;
+
+  animation:
+    particleFly 0.5s ease-out forwards;
+
+  z-index: 20;
+}
+
+@keyframes particleFly {
+
+  0% {
+    transform:
+      translate(0, 0)
+      scale(1);
+
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translate(var(--x), var(--y))
+      scale(0);
+
+    opacity: 0;
+  }
+}
+
+/* =========================
+   🎮 СТРЕЛКИ
+========================= */
+
+#controls {
+  text-align: center;
+  margin-top: 5px;
+}
+
+#controls button {
+  width: 58px;
+  height: 48px;
+
+  margin: 2px;
+
+  font-size: 22px;
+
+  border: none;
+
+  border-radius: 13px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 8px rgba(0, 229, 255, 0.6);
+}
+
+#controls button:active {
+  transform: scale(0.9);
+}
+
+/* =========================
+   🎉 ОКОНЧАНИЕ ИГРЫ
+========================= */
+
+.game-over {
+  display: none;
+
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(10, 0, 25, 0.85);
+
+  z-index: 1000;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.game-over-box {
+  width: 280px;
+
+  padding: 25px;
+
+  border: 2px solid #00e5ff;
+
+  border-radius: 20px;
+
+  background: #18002b;
+
+  text-align: center;
+
+  box-shadow:
+    0 0 30px #00e5ff;
+
+  animation:
+    popup 0.4s ease-out;
+}
+
+.game-over-box h2 {
+  font-size: 26px;
+}
+
+.game-over-box p {
+  font-size: 19px;
+}
+
+#restart {
+  padding: 11px 23px;
+
+  font-size: 17px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+}
+
+@keyframes popup {
+
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
