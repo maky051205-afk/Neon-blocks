@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Neon Blocks</title>
+
+  <!-- Стиль игры -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Данные приложения -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Цвет верхней панели -->
+  <meta name="theme-color" content="#00e5ff">
+
+</head>
+
+
+<body>
+
+  <!-- Главное меню -->
+
+  <div id="menu">
+
+    <h1>🧱 Neon Blocks</h1>
+
+    <p>⭐ Собери как можно больше звёзд!</p>
+
+    <p>🏆 Сможешь побить свой рекорд?</p>
+
+
+    <div id="difficulty">
+
+      <p>Выбери уровень:</p>
+
+      <button id="easy">
+        🟢 Лёгкий
+      </button>
+
+      <button id="medium">
+        🟡 Средний
+      </button>
+
+      <button id="hard">
+        🔴 Сложный
+      </button>
+
+    </div>
+
+
+    <div id="levelName">
+      🟡 Средний уровень
+    </div>
+
+
+    <button id="start">
+      ▶ Начать игру
+    </button>
+
+  </div>
+
+
+  <!-- Экран игры -->
+
+  <div id="gameScreen">
+
+    <h1>🧱 Neon Blocks</h1>
+
+
+    <div id="levelDisplay">
+      🟡 Средний
+    </div>
+
+
+    <div class="info">
+
+      <div>
+        ⭐ Очки:
+        <span id="score">0</span>
+      </div>
+
+
+      <div>
+        🏆 Рекорд:
+        <span id="best">0</span>
+      </div>
+
+    </div>
+
+
+    <!-- Игровое поле -->
+
+    <div id="game"></div>
+
+
+    <!-- Управление -->
+
+    <div id="controls">
+
+      <button id="up">
+        ⬆️
+      </button>
+
+
+      <div>
+
+        <button id="left">
+          ⬅️
+        </button>
+
+        <button id="down">
+          ⬇️
+        </button>
+
+        <button id="right">
+          ➡️
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Экран окончания -->
+
+  <div
+    id="gameOver"
+    class="game-over"
+  >
+
+    <div class="game-over-box">
+
+      <h2>
+        🎉 Игра окончена!
+      </h2>
+
+
+      <p id="finalScore">
+        ⭐ Очки: 0
+      </p>
+
+
+      <p id="finalBest">
+        🏆 Рекорд: 0
+      </p>
+
+
+      <p id="resultMessage"></p>
+
+
+      <button id="restart">
+        🔄 Играть снова
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- JavaScript -->
+
+  <script src="game.js"></script>
+
+</body>
+
+</html>
