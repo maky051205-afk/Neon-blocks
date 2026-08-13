@@ -1,0 +1,10 @@
+{
+  "name": "Neon Blocks",
+  "short_name": "Neon Blocks",
+  "description": "Neon Blocks — неоновая игра со звёздами и уровнями.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#080014",
+  "theme_color": "#00e5ff",
+  "orientation": "portrait"
+}
