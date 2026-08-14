@@ -1,17 +1,16 @@
 {
   "name": "Neon Blocks",
   "short_name": "Neon Blocks",
-  "description": "Neon Blocks — неоновая игра со звёздами и уровнями.",
-  "start_url": "./index.html",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#080014",
   "theme_color": "#00e5ff",
-  "orientation": "portrait"
-,
-"icons": [
-  {
-    "src": "IMG_9378_.jpeg",
-    "sizes": "512x512",
-    "type": "image/jpeg"
-  }
-]}
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "IMG_9378_.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
